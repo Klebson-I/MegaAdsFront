@@ -1,8 +1,17 @@
-import React from "react";
+import React, {FormEvent, FormEventHandler, useContext, useState} from "react";
 import './Header.css';
 import {Btn} from "../../common/Btn/Btn";
+import {SearchContext} from "../../../context/SearchContex";
 
 export const Header = () => {
+    const {search,setSearch} = useContext(SearchContext);
+    const [inputVal,setInputVal] = useState<string>("");
+
+    const setSearchFromState = (e:FormEvent) => {
+        e.preventDefault();
+        setSearch(inputVal);
+    }
+
     return <header>
         <h1>
             <strong>Mega</strong>Ogłoszenia
@@ -10,9 +19,12 @@ export const Header = () => {
 
         <Btn>Dodaj ogłoszenie</Btn>
 
-        <div className="search">
-            <input type="text"/>
+        <form className="search" onSubmit={setSearchFromState}>
+            <input type="text"
+                   value={inputVal}
+                   onChange={(e)=>setInputVal(e.target.value)}
+            />
             <Btn>Szukaj</Btn>
-        </div>
+        </form>
     </header>
 }
