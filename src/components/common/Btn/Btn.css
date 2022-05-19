@@ -8,3 +8,15 @@ button {
     cursor: pointer;
     border-radius: 2px;
 }
+
+.btn {
+    background-color: #2A913e;
+    border: 0;
+    color: white;
+    text-transform: uppercase;
+    padding: 5px;
+    font-weight: 200;
+    cursor: pointer;
+    border-radius: 2px;
+    text-decoration: none;
+}
